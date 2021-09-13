@@ -5,7 +5,7 @@ double F(double x); //  2.7 * asin(2.22 * x - 1) - x + 1.8 = 0
 
 double ChordMethod(double a, double b, double E);
 double HalfDivisionMethod(double a, double b, double E);
-double SimpleIterationMethod(double x0, double E);
+double SimpleIterationMethod(double x0, double E, double q);
 
 using namespace std;
 
@@ -65,16 +65,14 @@ double HalfDivisionMethod(double a, double b, double E)
 	return xn;
 }
 
-double SimpleIterationMethod(double x0, double E)
+double SimpleIterationMethod(double x0, double E, double q)
 {
 
 	double xn = Phi(x0);
-	double q;
 	do
 	{
 		cout << "xn: " << xn << " x0: " << x0 << endl;
 		xn = Phi(x0);
-		q = 0.5;
 		cout << "q: " << q << endl;
 		x0 = xn;
 	} while (abs(xn - x0) <= (1 - q) * E / q);
